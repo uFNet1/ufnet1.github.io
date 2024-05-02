@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#board {
+    z-index: 0;
+    background-image: url(./assets/bg.png);
+    width: 360px;
+    height: 576px;
+}
+
+.main-container {
+    margin: auto;
+    position: relative;
+}
+.menu {
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+.menu-button {
+  /* padding: 15px 32px;s */
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.back-button {
+    background-color: #914acfb9; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+#play-button {
+    background: url(./assets/start-button.png) no-repeat;
+    background-size: 100px;
+    width: 100px;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+}
+#score-button {
+    background: url(./assets/score-button.png) no-repeat;
+    background-size: 100px;
+    width: 100px;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+}
+#score-page{
+    display: none;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+#back-button {
+    background: url(./assets/back-button.png) no-repeat;
+    background-size: 100px;
+    width: 100px;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+}

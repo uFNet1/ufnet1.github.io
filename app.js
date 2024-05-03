@@ -1,6 +1,8 @@
-const fps = 60;
-//hi
+//game url % playerId
+let url = 'ufnet1.github.io';
+let playerid = url.searchParams.get("id");
 //Game window
+const fps = 60;
 let board;
 let boardWidth = 360;
 let boardHeight = 576;
@@ -69,6 +71,7 @@ function update() {
   
     if (player.y > board.height) {
         gameOver = true;
+        setHighScore();
     }
     context.drawImage(player.img, player.x, player.y, player.width, player.height);
 
@@ -159,7 +162,7 @@ function clearPlatforms(){
     while (platformArray.length > 0 && platformArray[0].y >= boardHeight) {
         platformArray.shift(); // remove platform
         newPlatform();
-        score+=1;
+        score+=1; // add score
     }
 }
 
@@ -252,4 +255,13 @@ function showMenu(){
 }
 function hideScorePage(){
     document.getElementById("score-page").style.display = "none";
+}
+
+function setHighScore() {
+    //send score to Telegram
+    var xmlhttp = new XMLHttpRequest();
+    var sendToUrl = url+"/highscore/" + score + 
+        "?id=" + playerid;
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }

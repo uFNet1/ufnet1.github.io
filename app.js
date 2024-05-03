@@ -260,9 +260,33 @@ function hideScorePage(){
 
 function setHighScore() {
     //send score to Telegram
-    var xmlhttp = new XMLHttpRequest();
-    var sendToUrl = url+"/highscore/" + score + 
-        "?id=" + playerid;
-    xmlhttp.open("GET", sendToUrl, true);
-    xmlhttp.send();
+    // var xmlhttp = new XMLHttpRequest();
+    // var sendToUrl = url+"/highscore/" + score + 
+    //     "?id=" + playerid;
+    // xmlhttp.open("GET", sendToUrl, true);
+    // xmlhttp.send();
+
+    var uid = parse("uid");
+    var msgid = parse("msgid");
+    var chatid = parse("chatid");
+    var iid = parse("iid");
+
+    if (uid && msgid && chatid) {
+        $.get("/setscore/uid/"+uid+"/chat/"+chatid+"/msg/"+msgid+"/score/"+score);
+    }
+    else if (uid && iid) {
+        $.get("/setscore/uid/"+uid+"/iid/"+iid+"/score/"+score)
+    }
+    function parse(val) {
+        var result = undefined;
+            tmp = [];
+        location.search
+        .substring(1)
+            .split("&")
+            .forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+        });
+        return result;
+    }
 }

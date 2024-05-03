@@ -277,16 +277,17 @@ function setHighScore() {
     else if (uid && iid) {
         $.get("/setscore/uid/"+uid+"/iid/"+iid+"/score/"+score)
     }
-    function parse(val) {
-        var result = undefined;
-            tmp = [];
-        location.search
-        .substring(1)
-            .split("&")
-            .forEach(function (item) {
-            tmp = item.split("=");
-            if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
-        });
-        return result;
-    }
+}
+
+function parse(val) {
+    var result = undefined;
+        tmp = [];
+    location.search
+    .substring(1)
+        .split("&")
+        .forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+    });
+    return result;
 }

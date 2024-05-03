@@ -271,12 +271,10 @@ function setHighScore() {
     var iid = parse("iid");
 
     if (uid && msgid && chatid) {
-        // $.get("/setscore/uid/"+uid+"/chat/"+chatid+"/msg/"+msgid+"/score/"+score);
         // var sendToUrl = url+"/highscore/" + score + "?id=" + playerid;
         fetch(`/setscore/uid/${uid}/chat/${chatid}/msg/${msgid}/score/${score}`)
     }
     else if (uid && iid) {
-        // $.get("/setscore/uid/"+uid+"/iid/"+iid+"/score/"+score)
         fetch(`/setscore/uid/${uid}/iid/${iid}/score/${score}`)
     }
 

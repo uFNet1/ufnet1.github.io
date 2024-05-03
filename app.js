@@ -259,12 +259,11 @@ function hideScorePage(){
 }
 
 function setHighScore() {
-    //send score to Telegram
+    // send score to Telegram
+
     // var xmlhttp = new XMLHttpRequest();
-    // var sendToUrl = url+"/highscore/" + score + 
-    //     "?id=" + playerid;
-    // xmlhttp.open("GET", sendToUrl, true);
-    // xmlhttp.send();
+   
+    
 
     var uid = parse("uid");
     var msgid = parse("msgid");
@@ -272,11 +271,17 @@ function setHighScore() {
     var iid = parse("iid");
 
     if (uid && msgid && chatid) {
-        $.get("/setscore/uid/"+uid+"/chat/"+chatid+"/msg/"+msgid+"/score/"+score);
+        // $.get("/setscore/uid/"+uid+"/chat/"+chatid+"/msg/"+msgid+"/score/"+score);
+        // var sendToUrl = url+"/highscore/" + score + "?id=" + playerid;
+        fetch(`/setscore/uid/${uid}/chat/${chatid}/msg/${msgid}/score/${score}`)
     }
     else if (uid && iid) {
-        $.get("/setscore/uid/"+uid+"/iid/"+iid+"/score/"+score)
+        // $.get("/setscore/uid/"+uid+"/iid/"+iid+"/score/"+score)
+        fetch(`/setscore/uid/${uid}/iid/${iid}/score/${score}`)
     }
+
+    // xmlhttp.open("GET", sendToUrl, true);
+    // xmlhttp.send();
 }
 
 function parse(val) {

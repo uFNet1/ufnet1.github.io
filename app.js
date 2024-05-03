@@ -1,6 +1,6 @@
 //game url % playerId
-let url = 'ufnet1.github.io';
-let playerid = url.searchParams.get("id");
+var url = new URL(location.href);
+var playerid = url.searchParams.get("id");
 //Game window
 const fps = 60;
 let board;
@@ -69,9 +69,10 @@ function update() {
 
     velocityY += gravity;
   
-    if (player.y > board.height) {
+    if (player.y > board.height && !gameOver) {
         gameOver = true;
         setHighScore();
+        console.log("test");
     }
     context.drawImage(player.img, player.x, player.y, player.width, player.height);
 
@@ -262,6 +263,6 @@ function setHighScore() {
     var xmlhttp = new XMLHttpRequest();
     var sendToUrl = url+"/highscore/" + score + 
         "?id=" + playerid;
-    xmlhttp.open("GET", url, true);
+    xmlhttp.open("GET", sendToUrl, true);
     xmlhttp.send();
 }
